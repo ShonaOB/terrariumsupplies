@@ -17,9 +17,9 @@
                 Containers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="" class="dropdown-item">Open Containers</a>
-                <a href="" class="dropdown-item">Closed Containers</a>
-                <a href="" class="dropdown-item">All Items</a>
+                <a href="{% url 'products' %}?q=open" class="dropdown-item">Open Containers</a>
+                <a href="{% url 'products' %}?q=closed" class="dropdown-item">Closed Containers</a>
+                <a href="{% url 'products' %}?category=Containers" class="dropdown-item">All Items</a>
             </div>
         </li>
 
@@ -28,9 +28,9 @@
                 Substrates
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="accessories-link">
-                <a href="" class="dropdown-item">Substrates</a>
-                <a href="" class="dropdown-item">Nutrients</a>
-                <a href="" class="dropdown-item">All Items</a>
+                <a href="{% url 'products' %}?category=Substrates" class="dropdown-item">Substrates</a>
+                <a href="{% url 'products' %}?q=worm" class="dropdown-item">Nutrients</a>
+                <a href="{% url 'products' %}?category=Substrates" class="dropdown-item">All Items</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -38,7 +38,7 @@
                 Accessories
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="accessories-link">
-                <a href="" class="dropdown-item">All Items</a>
+                <a href="{% url 'products' %}?category=Accessories" class="dropdown-item">All Items</a>
             </div>
         </li>
         <li class="nav-item dropdown">
