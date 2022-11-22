@@ -71,6 +71,10 @@ body {
 
 }
 
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
 
 /* -------------------------------- Media Queries */
 
