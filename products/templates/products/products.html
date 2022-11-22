@@ -93,6 +93,19 @@
                                         {% endif %}
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col">
+                                        {% if product.in_stock > 0 %}
+                                        <p class="small mt-1 mb-0">
+                                            <i class="fa-solid fa-check"></i> In Stock: {{ product.in_stock }}
+                                        </p>
+                                        {% else %} 
+                                        <p class="text-danger">
+                                            <i class="fa-solid fa-xmark"></i>Product out of stock!
+                                        </p>
+                                        {% endif %}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
