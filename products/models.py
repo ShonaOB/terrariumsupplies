@@ -27,5 +27,9 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
     in_stock = models.PositiveIntegerField(default=0)
 
+    def update_stock(self, *args, **kwargs):
+        new_stock_total = UpdateStockTotal(pk=item_id)
+        in_stock = new_stock_total
+
     def __str__(self):
         return self.name

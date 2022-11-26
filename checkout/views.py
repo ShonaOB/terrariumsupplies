@@ -56,7 +56,7 @@ def checkout(request):
         bag = request.session.get('bag', {})
         if not bag:
             messages.error(request, "There's nothing in your bag, keep shopping!")
-            return redirect(reverse('products0'))
+            return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
@@ -66,8 +66,6 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-
-        print(intent)
 
         order_form = OrderForm()
 
@@ -82,6 +80,7 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
+    bag = request.session.get('bag', {})
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Woohoo! Your order was placed. \
