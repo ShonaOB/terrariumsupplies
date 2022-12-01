@@ -85,8 +85,17 @@
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             </div>
                         </form>
+                        <form class="form" action="{% url 'add_to_wishlist' product.id %}" method="POST">
+                            {% csrf_token %}
+                             <div class="col-12">
+                                <input type="submit" class="btn wishlist-button rounded-0 text-uppercase mt-5" value="Add to Wishlist">
+                            </div>
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        </div>
+                        </form>
                     {% else %}
                         <p>Sorry, this item is currently out of stock! </p>
+                        <a href="{% url 'add_to_wishlist' product.id %}">Add to Wishlist</a>
                     {% endif %}
                     <p class="mt-3">Currently in Stock: {{ product.in_stock }}</p>
                     {% if request.user.is_superuser %}

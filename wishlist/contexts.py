@@ -1,5 +1,6 @@
 from django.conf import settings
 
+
 def wishlist_contents(request):
 
     wishlist_items = []
