@@ -22,7 +22,19 @@
 
         <div class="row">
             <div class="col">
-                {{ wishlist }}
+                <table>
+                    {% for wishlist in wishlist %}
+                        <tr>
+                            <td>
+                                {{ wishlist.wishlist_name }}
+                            </td>
+                            <td>
+                                {{ wishlist.product }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            
 
             </div>
         </div>
