@@ -23,11 +23,8 @@
         <div class="row">
             <div class="col">
                 <table>
-                    {% for wishlist in wishlist %}
+                    {% for product in wishlist.products.all %}
                         <tr>
-                            <td>
-                                {{ wishlist.wishlist_name }}
-                            </td>
                             <td>
                                 {{ wishlist.product }}
                             </td>
