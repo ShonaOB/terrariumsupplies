@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-2qxfe=hy^3(gzi6+ef@6*$*krf_59t(=qow#!h9l*$u2o1bky1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['shonaob-terrariumsupplies.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['terrariumsupplies.herokuapp.com', 'localhost']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
