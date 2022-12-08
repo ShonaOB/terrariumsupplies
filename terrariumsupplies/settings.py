@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import dj_database_url
 
 from pathlib import Path
 
@@ -27,9 +28,9 @@ SECRET_KEY = 'django-insecure-2qxfe=hy^3(gzi6+ef@6*$*krf_59t(=qow#!h9l*$u2o1bky1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ShonaOB-terrariumsupplies.herokuapp.com', 'localhost']
 
-DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # Application definition
 
@@ -50,7 +51,6 @@ INSTALLED_APPS = [
     'bag',
     'checkout',
     'profiles',
-    'wishlist',
 ]
 
 MIDDLEWARE = [
@@ -81,7 +81,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
-                'wishlist.contexts.wishlist_contents',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
@@ -119,17 +118,17 @@ LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'terrariumsupplies.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
