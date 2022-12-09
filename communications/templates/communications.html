@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<!-- Main container for page content : Contact Us -->
+<div class="container-fluid">
+    <!-- Page header -->
+    <div class="row">
+        <div class="col mt-3 mb-3">
+            <h1 class="page-title">Contact Us</h1>
+            <hr class="mb-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mt-3 mb-3">
+            <p class="card-text">
+                Do you have a question, a concern, or a new idea for us?</p>
+            <p class="card-text">If so, please complete the form below and we will aim to respond within 24
+                hours.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2">
+            <div class="card-body">
+                <!-- Form for user to input details and reason for contacting business -->
+                <form class="mt-3 text-black" action="{% url 'contact' %}" method="POST" id="contact-form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <small id="emailHelp" class="form-text text-muted mb-4">Rest assured we won't share your details
+                        with
+                        anyone else.
+                    </small>
+                    <!-- Button to submit contact form -->
+                    <button class="btn standard-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
