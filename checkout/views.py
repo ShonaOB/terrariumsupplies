@@ -44,6 +44,15 @@ def checkout(request):
                         product=product,
                         quantity=item_data
                     )
+                    if product.in_stock > 0:
+                        product.in_stock -= order_line_item.quantity
+                        product.save()
+                    else:
+                        messages.error(request, {
+                            "Oops! That product is out of stock - {{ product.name }}"
+                        })
+                        order.delete()
+                        return redirect(reverse('bag/'))
                     order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
