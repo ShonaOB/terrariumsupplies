@@ -97,7 +97,22 @@
                             <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete Product</a>
                         </small>
                     {% endif %}
-                    <p>{{ reviews }}</p>
+                    <hr>
+                    <h6>Reviews</h6>
+                    <p class="reviews">
+                        {% if reviews %}
+                            {% for review in reviews %}
+                                "{{ review.message }}"" by {{review.user }}
+                            {% endfor%}
+                        {% else %}
+                            There are no reviews for this product yet.
+                            {% if user.is_authenticated %}
+                                {{ ReviewForm }}
+                            {% else %}
+                                <a href="{% url 'account_login' %}">Login to review this product</a>
+                            {% endif %}
+                        {% endif %}
+                    </p>
                 </div>
             </div>
         </div>

@@ -96,6 +96,10 @@ body {
     height: 2px;
 }
 
+.reviews {
+    font-style: italic;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
