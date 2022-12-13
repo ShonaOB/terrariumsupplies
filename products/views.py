@@ -5,6 +5,7 @@ from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 
 from .models import Product, Category
+from reviews.models import Review
 from .forms import ProductForm
 
 
@@ -31,7 +32,7 @@ def all_products(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
-            
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
@@ -59,12 +60,14 @@ def all_products(request):
 
 
 def product_detail(request, product_id):
-    """ A view to show the product details """
+    """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    reviews = Review.objects.all()
 
     context = {
         'product': product,
+        'reviews': reviews,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -85,7 +88,7 @@ def add_product(request):
             form.save()
             messages.success(request, 'Added Successfully')
             return redirect(reverse('add_product'))
-        else: 
+        else:
             messages.error(request, 'Uh oh! There was an error. Please check your form.')
     else:
         form = ProductForm()
@@ -93,7 +96,7 @@ def add_product(request):
     form = ProductForm()
     template = 'products/add_product.html'
     context = {
-        'form': form, 
+        'form': form,
     }
 
     return render(request, template, context)
