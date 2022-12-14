@@ -30,7 +30,6 @@ def review_form(request, *args, **kwargs):
         if form.is_valid():
             form.instance.User = request.user
             form.save()
-
             messages.success(request, 'Thank you for your review!')
 
             # redirect to home page

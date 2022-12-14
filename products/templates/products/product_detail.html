@@ -100,12 +100,12 @@
                     <hr>
                     <h6>Reviews</h6>
                     <p class="reviews">
-                        {% if product.name in reviews %}
+                        {% if reviews %}
                             {% for review in reviews %}
-                                "{{ review.message }}"" by {{review.user }}
+                                <p>"{{ review.message }}". Product:"{{ review.product }}"</p>
                             {% endfor%}
                         {% else %}
-                            There are no reviews for this product yet.
+                            <p>There are no reviews for this product yet.</p>
                             {% if user.is_authenticated %}
                                 <a href="{% url 'review_form' %}">Submit a Review</a>
                             {% else %}
