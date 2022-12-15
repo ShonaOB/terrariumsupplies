@@ -22,7 +22,7 @@
                 <p class="reviews">
                     {% if reviews %}
                         {% for review in reviews %}
-                            <p>"{{ review.message }}". Product:"{{ review.product }} created by {{ review.User }}" <a href="{% url 'update_review' review.id %}">Update</a></p>
+                            <p>"{{ review.message }}". Product:"{{ review.product }} created by {{ review.User }}" <a href="{% url 'update_review' review.id %}">Update</a> <a href="{% url 'delete_review' review.id %}">Delete</a></p>
                         {% endfor%}
                     {% else %}
                         <p>There are no reviews on this account.</p>

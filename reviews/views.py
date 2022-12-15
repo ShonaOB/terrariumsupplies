@@ -74,3 +74,16 @@ def update_review(request, review_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_review(request, review_id):
+    """
+    updating a review for user without accessing admin
+    """
+    review = Review.objects.get(id=review_id)
+    review.delete()
+
+    messages.success(request, 'You have deleted your review')
+
+    return redirect('profile')
