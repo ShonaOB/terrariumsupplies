@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from products.models import Product
 from .forms import ReviewForm
+from reviews.models import Review
 
 
 def all_reviews(request, product):
@@ -17,6 +18,7 @@ def all_reviews(request, product):
     }
 
     return render(request, 'reviews/reviews.html', context)
+
 
 @login_required()
 def review_form(request, *args, **kwargs):
@@ -47,27 +49,28 @@ def review_form(request, *args, **kwargs):
 
 
 @login_required
-def update_review(request):
+def update_review(request, review_id):
     """
     updating a review for user without accessing admin
     """
+    review = Review.objects.get(id=review_id)
     if request.method == 'POST':
-        form = ReviewForm(request.POST, instance=product)
+        form = ReviewForm(request.POST)
         if form.is_valid():
+            form.instance.User = request.user
             form.save()
             messages.success(request, 'Successfully updated your review!')
-            return redirect(reverse('product_detail', args=[product.id]))
+            return redirect(reverse('products'))
         else:
             messages.error(request, 'Oops that did not work, please check your form again')
     else:
         form = ReviewForm(instance=review)
-        messages.info(request, f'You are updating your review for {product.name}')
-    
-    template = 'reviews/edit_review.html'
+        messages.info(request, f'You are updating your review')
+
+    template = 'update_review.html'
     context = {
         'form': form,
-        'product': product,
+        'review': review,
     }
 
     return render(request, template, context)
-    

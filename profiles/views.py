@@ -5,8 +5,10 @@ from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile
 from .forms import UserProfileForm
+from reviews.models import Review
 
 from checkout.models import Order
+
 
 @login_required
 def profile(request):
@@ -18,9 +20,9 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated!')
-        else: 
+        else:
             messages.error(request, 'Update failed, please check your form')
-    else: 
+    else:
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
 
@@ -33,6 +35,7 @@ def profile(request):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def order_history(request, order_number):
@@ -49,3 +52,18 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def review_history(request):
+    """ A view to show individual reviews by user """
+
+    user = request.user
+    reviews = Review.objects.filter(User=request.user)
+
+    context = {
+        'reviews': reviews,
+        'user': user,
+    }
+    
+    return render(request, 'profiles/reviews.html', context)
