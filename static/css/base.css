@@ -6,7 +6,7 @@ body {
     background: url('/media/pics/homepage_background_cropped.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
-    color: black;
+    color: #0D2226;
     font-family: 'Montserrat';
 }
 
@@ -28,19 +28,14 @@ body {
 }
 
 .shop-now-button {
-    background: black;
-    color: white;
+    background: #0D2226;
+    color: #E9ECF2;
     min-width: 260px;
 }
 
 .btn-black {
-    background: black;
-    color: white;
-}
-
-.wishlist-button{
-    background:green;
-    color: white;
+    background: #0D2226;
+    color: #E9ECF2;
 }
 
 .shop-now-button:hover,
@@ -49,8 +44,8 @@ body {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #222;
-    color: white;
+    background: #0D2226;
+    color: #E9ECF2;
 }
 
 .text-black {
@@ -58,11 +53,11 @@ body {
 }
 
 .border-black {
-    border: 1px solid black !important;
+    border: 1px solid #0D2226 !important;
 }
 
 .bg-black {
-    background: #000 !important;
+    background: #0D2226 !important;
 }
 
 .overlay {
@@ -71,7 +66,7 @@ body {
     top: 0;
     left:0;
     position:fixed;
-    background: white;
+    background: #E9ECF2;
     z-index:-1;
 
 }
@@ -107,20 +102,14 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #73947f !important;
-    color: black !important;
+    background-color: #3C5949 !important;
+    color: #0D2226 !important;
     font-weight: bolder;
-    box-shadow: 0 50vh 0 50vh #e1efe6;
+    box-shadow: 0 50vh 0 50vh #E9ECF2;
 }
 
 .footer-div {
     padding: 2rem 1rem;
-}
-
-.socials-right {
-    position: fixed;
-    right: 0;
-    bottom: 0;
 }
 
 /* -------------------------------- Media Queries */
@@ -166,14 +155,14 @@ footer {
 }
 
 .shop-now-button {
-    background: black;
-    color: white;
+    background: #0D2226;
+    color: #E9ECF2;
     min-width: 260px;
 }
 
 .btn-black {
-    background: black;
-    color: white;
+    background: #0D2226;
+    color: #E9ECF2;
 }
 
 .shop-now-button:hover,
@@ -182,16 +171,16 @@ footer {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #222;
-    color: white;
+    background: #0D2226;
+    color: #E9ECF2;
 }
 
 .text-black {
-    color: #000 !important;
+    color: #0D2226 !important;
 }
 
 .border-black {
-    border: 1px solid black !important;
+    border: 1px solid #0D2226 !important;
 }
 
 /* -------------------------------- Media Queries */

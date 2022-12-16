@@ -1,5 +1,5 @@
 <p align="center">
-        <img src="media/logo.png" alt="Terrarium Supplies Logo" height="250px" width="250px"/>
+        <img src="media/readme/logo.png" alt="Terrarium Supplies Logo" height="250px" width="250px"/>
     </p>
 
 Welcome ShonaOB,
