@@ -1,4 +1,6 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<p align="center">
+        <img src="media/logo.png" alt="Terrarium Supplies Logo" height="250px" width="250px"/>
+    </p>
 
 Welcome ShonaOB,
 

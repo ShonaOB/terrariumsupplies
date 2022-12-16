@@ -6,7 +6,7 @@ body {
     background: url('/media/pics/homepage_background_cropped.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
-    color: rgb(100, 99, 99);
+    color: black;
     font-family: 'Montserrat';
 }
 
@@ -98,6 +98,29 @@ body {
 
 .reviews {
     font-style: italic;
+}
+
+/* -------------------------------footer styles */
+/* || FOOTER STYLES  */
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #73947f !important;
+    color: black !important;
+    font-weight: bolder;
+    box-shadow: 0 50vh 0 50vh #e1efe6;
+}
+
+.footer-div {
+    padding: 2rem 1rem;
+}
+
+.socials-right {
+    position: fixed;
+    right: 0;
+    bottom: 0;
 }
 
 /* -------------------------------- Media Queries */

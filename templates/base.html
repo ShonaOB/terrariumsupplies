@@ -18,6 +18,15 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+            #mc_embed_signup {
+                background: rgb(130, 158, 130);
+                clear: left;
+                font: 14px Montserrat, sans-serif;
+                width: 100%;
+            }
+        </style>
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% endblock %}
 
@@ -136,6 +145,8 @@
 
     {% block content %}
     {% endblock %}
+    {% include 'includes/footer.html' %}
+
 
     {% block postloadjs %}
     <script type="text/javascript">
