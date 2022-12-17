@@ -30,3 +30,6 @@ urlpatterns = [
     path('reviews/', include('reviews.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'terrariumsupplies.views.error_404'
+handler500 = 'terrariumsupplies.views.error_500'

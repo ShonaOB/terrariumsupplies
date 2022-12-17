@@ -112,6 +112,14 @@ footer {
     padding: 2rem 1rem;
 }
 
+.text-footer {
+    color: #E9ECF2 !important;
+}
+
+.text-light {
+    font-weight: lighter;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
