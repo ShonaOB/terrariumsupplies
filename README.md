@@ -284,8 +284,8 @@ Testing procedures will ensure the deployed site aligns to the site in developme
 * Performance - using Chrome's developer tool 'Lighthouse Testing' pages are tested for performance, best-practice, SEO and accessibility.
 * Device - manual testing will be performed on an iOS and Android mobile, Tablet, Laptop and Desktop to ensure all users have a positive experience no matter which device or browser they prefer to use. 
 * Code validation - ensuring the code base is validated using industry standard tools for HTML, CSS, JavaScript and Python code.
-
-<FILE!!!!!>
+Please see this file for detailed testing:
+<TESTING.md>
 <br>
 
 ***
