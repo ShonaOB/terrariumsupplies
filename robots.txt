@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /bag/
+sitemap: https://terrariumsupplies.herokuapp.com/sitemap.xml
