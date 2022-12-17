@@ -62,7 +62,8 @@ def update_review(request, review_id):
             messages.success(request, 'Successfully updated your review!')
             return redirect(reverse('products'))
         else:
-            messages.error(request, 'Oops that did not work, please check your form again')
+            messages.error(request, 'Oops'
+                           'that did not work, please check your form again')
     else:
         form = ReviewForm(instance=review)
         messages.info(request, f'You are updating your review')

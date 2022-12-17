@@ -48,28 +48,36 @@ def checkout(request):
                         product.in_stock -= order_line_item.quantity
                         product.save()
                     else:
-                        messages.error(request, {
-                            "Oops! That product is out of stock - {{ product.name }}"
-                        })
+                        messages.error(
+                            request, {
+                                "Oops! That product is out of stock"
+                                " - {{ product.name }}"
+                                })
                         order.delete()
                         return redirect(reverse('bag/'))
                     order_line_item.save()
                 except Product.DoesNotExist:
-                    messages.error(request, (
-                        "That's strange! An item in your bag wasn't found in our store."
-                        "Please contact us for support."
-                    ))
+                    messages.error(
+                        request, ("That's strange! An item in your bag",
+                                  "wasn't found in our store."
+                                  "Please contact us for support."))
                     order.delete()
                     return redirect(reverse('view_bag'))
             request.session['save_info'] = 'save_info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(
+                reverse(
+                    'checkout_success',
+                    args=[
+                        order.order_number]))
         else:
-            messages.error(request, 'An error has occured. Please contact us for support')
+            messages.error(
+                request, 'An error has occured. Please contact us for support')
 
     else:
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request, "There's nothing in your bag, keep shopping!")
+            messages.error(
+                request, "There's nothing in your bag, keep shopping!")
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)

@@ -8,7 +8,8 @@ class Review(models.Model):
     Model fields for adding product reviews
     """
     created_on = models.DateTimeField(auto_now_add=True)
-    User = models.ForeignKey(User, blank=False, null=False, on_delete=models.CASCADE)
+    User = models.ForeignKey(
+        User, blank=False, null=False, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     message = models.TextField(help_text='Add your review here')
 

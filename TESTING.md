@@ -119,7 +119,6 @@ reviews/templates/reviews.html                                                  
 In summary of the results;
 * Given the nature of the Django build, I tested the live web page as opposed to the code input validation method. This was successful.
 * The forms for managing products came under scrutiny as they are not supported by screen readers as standard and hence received a sub 90% score. For a future release the forms will be rebuilt to ensure compliance. 
-* Within the homepage some mailchimp features were missing tags, which were resolved. 
 * The inclusion of the third party element in MailChimp raised an a couple of errors including contrast, which were resolved as much as possible.
 <br>
 
@@ -152,21 +151,19 @@ Writing well formed, quality code is essential for the future development of any
 * W3 Validator for HTML
 * W3 Jigsaw for CSS
 * JS Hint for JavaScript
-* CI Python Linter for Python
+* Autopep8 for python
 
 To gain passes across the code base I had to address minor issues such as;
 
-* General formatting and resolving E501 line length errors
-* Removing unnecessary trailing slashes from elements e.g. <br/>
-* Removing unnecessary 'type' attribute from script tags
-* Remove an anchor tag from within a HTML button and change the anchor to look like a button.
+* General formatting and resolving E501 line length errors - Except in settings.py
+* Removing unnecessary trailing slashes from elements
+* Removing unnecessary 'type' attribute from script tag
 * Adding new lines to the end of Python files to resolve W292 errors.
-* More details of these minor infringements can be found within the (TCC Testing document in the repo)[].
 
 The following issues were identified and not resolved so carry an EXC = pass with an acceptable exception.
 
-* env.py - E501 as line breached 79 characters, however when I tried to split the Database URL over two lines it not longer functioned. As a result I have chosen to allow this exception for the MVP.
-* profiles.js and stripe_elements.js - ES6 warning to use 'esversion:6'. I researched a fix and added JSHint ES6 to the settings.JSON file, however this did not clear the warning. As this was a warning and I could not identify any issues with functionality I chose to allow this exception for the MVP.
+* settings.py - E501 as line breached 79 characters, however when I tried to split the Database URL over two lines it not longer functioned. As a result I have chosen to allow this exception for the MVP.
+
 
 <br>
 

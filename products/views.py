@@ -44,7 +44,8 @@ def all_products(request):
                 messages.error(request, "You didn't enter any search words!")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) |\
+                Q(description__icontains=query)
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -79,7 +80,8 @@ def add_product(request):
     adding a product to the store
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you need to be an administrator to do this!')
+        messages.error(request, "Sorry"
+                       "you need to be an administrator to do this!")
         return redirect(revers('home'))
 
     if request.method == 'POST':
@@ -89,7 +91,8 @@ def add_product(request):
             messages.success(request, 'Added Successfully')
             return redirect(reverse('add_product'))
         else:
-            messages.error(request, 'Uh oh! There was an error. Please check your form.')
+            messages.error(request, "Uh oh!"
+                           "There was an error. Please check your form.")
     else:
         form = ProductForm()
 
@@ -106,7 +109,8 @@ def add_product(request):
 def edit_product(request, product_id):
     """ Edit a product in the store """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you need to be an administrator to do this!')
+        messages.error(request, "Sorry"
+                       "you need to be an administrator to do this!")
         return redirect(revers('home'))
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
@@ -116,7 +120,8 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(request, "Failed to update product."
+                           "Please ensure the form is valid.")
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -134,7 +139,8 @@ def edit_product(request, product_id):
 def delete_product(request, product_id):
     """ Delete a product from the store """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you need to be an administrator to do this!')
+        messages.error(request, "Sorry,"
+                       "you need to be an administrator to do this!")
         return redirect(revers('home'))
 
     product = get_object_or_404(Product, pk=product_id)

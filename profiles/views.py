@@ -65,5 +65,5 @@ def review_history(request):
         'reviews': reviews,
         'user': user,
     }
-    
+
     return render(request, 'profiles/reviews.html', context)
