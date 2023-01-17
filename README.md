@@ -319,7 +319,7 @@ Please see this file for detailed testing:
 
 ### Validator Results: 
 W3C HTML Validation - by entering the deployed link: 
-    <img src=>
+    <img src="media/readme/htmlvalidation.jpg" alt="HTML validation - no errors found">
 ***
 
 <br>
