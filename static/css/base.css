@@ -95,6 +95,11 @@ body {
     font-style: italic;
 }
 
+.error_page {
+    min-height: 180px;
+    margin: 200px;
+}
+
 /* -------------------------------footer styles */
 /* || FOOTER STYLES  */
 footer {
