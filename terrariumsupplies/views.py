@@ -14,4 +14,4 @@ def error_500(request,):
     Handles HTTP 500 errors
     """
 
-    return render(request, '/terrariumsupplies/templates/errors/500.html')
+    return render(request, 'errors/500.html')
