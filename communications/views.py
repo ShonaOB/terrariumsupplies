@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.conf import settings
-from .forms import ContactForm
+from .forms import ContactForm, ApplicationForm
 
 
 def contact(request, *args, **kwargs):
@@ -34,3 +34,35 @@ def contact(request, *args, **kwargs):
         form = ContactForm()
 
     return render(request, 'communications.html', {'form': form})
+
+
+def StallholderApplication(request, *args, **kwargs):
+    """
+    Displays Contact Us page form.
+    Uses Post method to send contact form.
+    """
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST)
+        if form.is_valid():
+            # name = form.cleaned_data['name'],
+            # email = form.cleaned_data['email'],
+            # company_name = form.cleaned_data['company_name'],
+            # product_type = form.cleaned_data['product_type'],
+            form.save()
+
+            messages.success(
+               request, 'Thank you for contacting us \
+                - we will reply within 24 hours!')
+
+            # redirect to home page
+            return redirect(reverse('products'))
+        else:
+            messages.error(
+                request, 'Something went wrong with your submission.\
+                Please try again.'
+            )
+    # blank form created if any other method is used
+    else:
+        form = ApplicationForm()
+
+    return render(request, 'stallholderapplication.html', {'form': form})
