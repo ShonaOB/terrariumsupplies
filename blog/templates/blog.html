@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<!-- Main container for page content : Contact Us -->
+<div class="container-fluid">
+    <!-- Page header -->
+    <div class="row">
+        <div class="col mt-3 mb-3">
+            <h1 class="page-title">Terra News - Our Blog</h1>
+            <hr class="mb-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mt-3 mb-3">
+            <p class="card-text">
+                Welcome to our blog! Here we will bring you the latest news, tips, tricks and how-to's of Terrarium keeping.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2">
+            <div class="row">
+            {% for post in post_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <img src="{{ post.image }}">
+                            <p class="author"> Author: {{ post.author }} </p>
+                            <p class="text-muted title">Title: {{ post.title }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+</div>
+{% endblock content %}
