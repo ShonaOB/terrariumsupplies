@@ -1,8 +1,11 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.views import generic
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
 from .forms import PostForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 
@@ -12,32 +15,17 @@ class PostList(generic.ListView):
     template_name = 'blog.html'
 
 
-@login_required
-def add_post(request):
+class AddPost(LoginRequiredMixin,generic.CreateView):
     """
     adding a blog post
     """
-    if not request.user.is_superuser:
-        messages.error(request, "Sorry"
-                       "you need to be an administrator to do this!")
-        return redirect(reverse('home'))
+    model = Post
+    template_name = 'add_post.html'
+    fields = ['title','content', 'image']
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Great! Your blog post is successfully posted')
-            return redirect(reverse('home'))
-        else:
-            messages.error(request, "Uh oh!"
-                           "There was an error. Please check your form.")
-    else:
-        form = PostForm()
-
-    form = PostForm()
-    template = 'add_post.html'
-    context = {
-        'form': form,
-    }
-
-    return render(request, template, context)
+    def get_success_url(self):
+        return reverse('blog')
