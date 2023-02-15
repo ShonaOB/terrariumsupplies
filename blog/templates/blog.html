@@ -27,6 +27,15 @@
         </div>
     </div>
     <div class="row">
+        <div class="col mt-3 mb-3">
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                    <a href="{% url 'add_post' %}" class="dropdown-item">Add a New Blog Post</a>
+                {% endif %}                
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
             <div class="row">
             {% for post in post_list %}

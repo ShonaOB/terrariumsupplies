@@ -35,7 +35,7 @@ def add_post(request):
         form = PostForm()
 
     form = PostForm()
-    template = 'blog/templates/includes/add_post.html'
+    template = 'add_post.html'
     context = {
         'form': form,
     }
