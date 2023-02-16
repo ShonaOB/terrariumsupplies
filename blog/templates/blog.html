@@ -45,7 +45,7 @@
             <div class="row">
             {% for post in post_list %}
                 <div class="col-4">
-                    <div class="card text-center">
+                    <div class="card h-100 text-center">
                         <div class="card-body">
                             <a href="{% url 'post_detail' post.id %}">
                                 <img class="card-img-top img-fluid" src="{{ post.image.url }}" alt="{{ post.title }}">
