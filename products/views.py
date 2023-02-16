@@ -111,7 +111,7 @@ def edit_product(request, product_id):
     if not request.user.is_superuser:
         messages.error(request, "Sorry"
                        "you need to be an administrator to do this!")
-        return redirect(revers('home'))
+        return redirect(reverse('home'))
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)

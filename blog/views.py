@@ -1,9 +1,15 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.views import generic
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import (ListView,
+                                  DetailView,
+                                  CreateView,
+                                  UpdateView,
+                                  DeleteView)
+from django.contrib import messages
 from .models import Post
 from .forms import PostForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -39,3 +45,34 @@ def post_detail(request, post_id):
     }
 
     return render(request, 'post_detail.html', context)
+
+
+@login_required
+def edit_post(request, post_id):
+    """ A view to edit an existing post"""
+    if not request.user.is_superuser:
+        messages.error(requests, "Sorry"
+                       "You need to be an administrator to do this!")
+        return redirect(reverse('home'))
+    post = get_object_or_404(Post, pk=post_id)
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully Updated blog post')
+            return redirect(reverse('post_detail', args=[post.id]))
+        else:
+            form = PostForm(instance=post)
+            messages.info(request, 'Failed to update post.'
+                          'Please check your form and try again.')
+    else:
+        form = PostForm(instance=post)
+        messages.info(request, f'You are editing {post.id}')
+
+    template = 'edit_post.html'
+    context = {
+        'form': form,
+        'post': post,
+    }
+
+    return render(request, template, context)
