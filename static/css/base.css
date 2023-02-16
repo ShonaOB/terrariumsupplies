@@ -110,6 +110,7 @@ body {
 /* || FOOTER STYLES  */
 footer {
     position: relative;
+    padding-top: 100px;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -200,6 +201,10 @@ footer {
 
 .border-black {
     border: 1px solid #0D2226 !important;
+}
+
+#delivery-banner {
+    padding-bottom: 116px;
 }
 
 /* -------------------------------- Media Queries */
