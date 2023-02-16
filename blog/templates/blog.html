@@ -11,7 +11,7 @@
 
 
 {% block content %}
-<!-- Main container for page content : Contact Us -->
+<div class="overlay"></div>
 <div class="container-fluid">
     <!-- Page header -->
     <div class="row">
@@ -21,16 +21,21 @@
         </div>
     </div>
     <div class="row">
-        <div class="col mt-3 mb-3">
-            <p class="card-text">
-                Welcome to our blog! Here we will bring you the latest news, tips, tricks and how-to's of Terrarium keeping.</p>
+        <div class="col-12 logo-font">
+            <p>
+                Welcome to our blog! Here we will bring you the latest news, tips, tricks and how-to's of Terrarium keeping.
+            </p>
         </div>
     </div>
     <div class="row">
         <div class="col mt-3 mb-3">
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
-                    <a href="{% url 'add_post' %}" class="dropdown-item">Add a New Blog Post</a>
+                <div class="my-5">
+                    <h4>
+                        <a href="{% url 'add_post' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Write a Blog Post</a>
+                    </h4>
+                </div>
                 {% endif %}                
             {% endif %}
         </div>
@@ -40,13 +45,14 @@
             <div class="row">
             {% for post in post_list %}
                 <div class="col-4">
-                    <div class="card mb-4">
+                    <div class="card text-center">
                         <div class="card-body">
                             <a href="{% url 'post_detail' post.id %}">
                                 <img class="card-img-top img-fluid" src="{{ post.image.url }}" alt="{{ post.title }}">
                             </a>
+                            <h5 class="card-title">{{ post.title }}</h5>
                             <p class="author"> Author: {{ post.author }} </p>
-                            <p class="text-muted title">Title: {{ post.title }}</p>
+                            <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">Read More</a>
                         </div>
                     </div>
                 </div>
