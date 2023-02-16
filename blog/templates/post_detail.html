@@ -32,11 +32,12 @@
             <div class="col mt-3 mb-3">
                 {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
-                    <div class="my-5">
-                        <h4>
-                            <a href="{% url 'edit_post' post.id %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Edit this Blog Post</a>
-                        </h4>
-                    </div>
+                    <small class="ml-3">
+                            <a class="text-warning" href="{% url 'edit_post' post.id %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Edit this Blog Post</a>
+                    </small>
+                    <small class="ml-3">
+                        <a class="text-danger" href="{% url 'delete_post' post.id %}">Delete Post - Cannot be undone!</a>
+                    </small>
                     {% endif %}                
                 {% endif %}
             </div>
