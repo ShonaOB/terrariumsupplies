@@ -42,7 +42,9 @@
                 <div class="col-4">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <img class="card-img-top img-fluid" src="{{ post.image.url }}" alt="{{ post.title }}">
+                            <a href="{% url 'post_detail' post.id %}">
+                                <img class="card-img-top img-fluid" src="{{ post.image.url }}" alt="{{ post.title }}">
+                            </a>
                             <p class="author"> Author: {{ post.author }} </p>
                             <p class="text-muted title">Title: {{ post.title }}</p>
                         </div>
