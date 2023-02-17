@@ -99,7 +99,7 @@
                     {% endif %}
                     <hr>
                     <h6>Reviews</h6>
-                    <p class="reviews">
+                    <div class="reviews">
                         {% if reviews %}
                             {% for review in reviews %}
                                 <p>"{{ review.message }}". Product:"{{ review.product }}"</p>
@@ -112,10 +112,9 @@
                                 <a href="{% url 'account_login' %}">Login to review this product</a>
                             {% endif %}
                         {% endif %}
-                    </p>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 {% endblock %}
